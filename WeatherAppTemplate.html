@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <title>The Weather App</title>
+      
+    <style>
+        body {
+            background-color: beige;
+        }
+        
+        .mainC {
+          width: 50%;
+          background-color: cornflowerblue;
+          margin: 50px auto;
+          text-align: center;
+          border-radius: 5px 5px 5px 5px;
+          padding: 20px 0 20px 0;
+        }
+
+        .btn {
+          cursor: pointer;
+        }
+
+        .myText, h1 {
+          font-family: arial;
+          font-weight: bold;
+        }
+
+        #result {
+          font-size: 1.6em;
+          font-weight: bold;
+          text-align: center;
+          height: 30px;
+          background-color: skyblue;
+          margin: 0 auto;
+        }
+    
+    </style>
+      
+  </head>
+  <body>
+    <div class="mainC">
+      <h1>The Weather App</h1>
+      <p class="myText">Enter city name <input id="city" type="text">               <button id="myBtn" class="btn">Submit</button></p> 
+      <p class="myText">Today's maximum temperature is:</p>
+      <div id="result" class="myText"></div>
+    </div>
+      
+  
+  </body>
+</html>
