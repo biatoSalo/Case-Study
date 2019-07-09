@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head>
+    <title>The Weather App</title>
+      
+    <style>
+        body {
+            background-color: beige;
+        }
+        
+        .mainC {
+          width: 50%;
+          background-color: cornflowerblue;
+          margin: 50px auto;
+          text-align: center;
+          border-radius: 5px 5px 5px 5px;
+          padding: 20px 0 20px 0;
+        }
+
+        .btn {
+          cursor: pointer;
+        }
+
+        .myText, h1 {
+          font-family: arial;
+          font-weight: bold;
+        }
+
+        #result {
+          font-size: 1.6em;
+          font-weight: bold;
+          text-align: center;
+          height: 30px;
+          background-color: skyblue;
+          margin: 0 auto;
+        }
+    
+    </style>
+      
+  </head>
+  <body>
+    <div class="mainC">
+      <h1>The Weather App</h1>
+      <p class="myText">Enter city name <input id="city" type="text">               <button id="myBtn" class="btn">Submit</button></p> 
+      <p class="myText">Today's maximum temperature is:</p>
+      <div id="result" class="myText"></div>
+    </div>
+      
+      <script>
+      
+        let myButton = document.getElementById("myBtn");
+
+        myButton.addEventListener("click", getWeather);
+
+        function getWeather() {
+          let theCity = document.getElementById("city").value;
+
+        /*const apiURL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + theCity + "&units=metric&APPID=6c5dbc17b5c4fa8f4c39c6d40743aaee&cnt=7";*/
+            
+        const apiURL = "http://api.openweathermap.org/data/2.5/find?q=" + theCity + "&units=metric&appid=6c5dbc17b5c4fa8f4c39c6d40743aaee";
+
+       
+            
+            const request = new XMLHttpRequest();
+
+        request.open("GET", apiURL, true);
+
+        request.send();
+
+        console.log(request);
+
+        request.onload = function() {
+
+          if(request.readyState === 4 && request.status === 200) {
+
+            let myData = JSON.parse(request.responseText);
+              
+            document.getElementById("result").innerHTML = myData.list[0].main.temp + "&#176;C";
+
+            console.log(myData);
+
+          }
+
+        };
+
+        }
+      
+      </script>
+  </body>
+</html>
